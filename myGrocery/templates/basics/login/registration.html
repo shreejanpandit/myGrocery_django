@@ -1,0 +1,67 @@
+{% load static %}
+<html>
+<head>
+	<title>Registration</title>
+	 <link rel="stylesheet" href="{% static 'css/registration.css'%}">
+	 <link rel="stylesheet" href="{% static 'css/grid.css'%}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="container page_background">
+		<div class="sub_main">
+			<div class="col-12">
+				<div class="col-6">
+					<div class="form_card">
+						<div class="heading"><h2>Create An Account</h2></div>
+						<form id="" action="/registration/save" method="POST">
+							{% csrf_token %}
+							<div class="log_form">
+								<div class="form_group">
+									<input type="text" name="name" class="form-control" placeholder="Name" />
+									<span class="invalid-feedback"></span>
+								</div><div class="form_group">
+									<input type="text" name="username" class="form-control" placeholder="UserName" />
+									<span class="invalid-feedback">{% for m in messages %}
+										<h3>{{m}}</h3>
+										{% endfor %}
+									</span>
+								</div>
+								<div class="form_group">
+									<input type="email" name="email" class="form-control" placeholder="Email" />
+									<span class="invalid-feedback">
+										{% for m in messages %}
+										<h3>{{m}}</h3>
+										{% endfor %}
+									</span>
+								</div>
+								<div class="form_group">
+									<input type="text" name="contact" class="form-control" placeholder="Contact" />
+									<span class="invalid-feedback"><?= !empty($data['contact_err'])?$data['contact_err']:'' ;?></span>
+								</div>
+								<div class="form_group">
+									<input type="text" name="address" class="form-control" placeholder="Address" />
+									<span class="invalid-feedback"><?= !empty($data['address_err'])?$data['address_err']:'' ;?></span>
+								</div>
+								<div class="form_group">
+									<input type="password" name="password1" class="form-control" placeholder="Enter your password" />
+									<span class="invalid-feedback"><?= !empty($data['password_err'])?$data['password_err']:'' ;?></span>
+								</div>
+								<div class="form_group">
+									<input type="password" name="password2" class="form-control" placeholder="Enter your password again" />
+									<span class="invalid-feedback"><?= !empty($data['confirm_password_err'])?$data['confirm_password_err']:'' ;?></span>
+								</div>
+								<button type="submit" class="btn_primary">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="banner_img">
+						<img src="{% static 'img/registration_img.png' %}" class="box_img">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/grid.css'%}">
+    <link rel="stylesheet" href="{% static 'css/logout.css'%}">
+    <link rel="stylesheet" href="{% static 'css/modal.css'%}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome/fontawesome.css'%}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome/all.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title> {% block title %} {% endblock %}</title>
+</head>
+<body>
+	<div class="">
+		<header class="header">
+			<nav>
+				<div class="col-12">
+					<div class="col-4">
+						<div class="logo_text">
+							<a href="#" id="myBtn">
+								myGrocery
+							</a>
+						</div>
+						<div id="myModal" class="modal">
+							{% for x in data_grocery%}
+						  <!-- Modal content -->
+						  <div class="modal-content">
+
+							<div class="modal-header">
+						 	<span class="close">&times;</span>
+							  <h2>Grocery Name: {{x.user}}</h2>
+							</div>
+							<div class="modal-body">
+							  <h3>Address : {{x.address}}</h3>
+							  <h3>Email : {{x.email}}</h3>
+							  <h3>Established date : {{x.est_date}}</h3>
+							  <h3>website : <a href="{{x.website}}"> {{x.website}}</a></h3><h3>facebook : <a href="{{x.facebook}}">{{x.facebook}}</a></h3>
+							</div>
+							<div class="modal-footer">
+							  <h3>Credit goes to : Mr. Shreejan Pandit</h3>
+							</div>
+						  </div>
+							{% endfor %}
+						</div>
+
+					</div>
+
+					<div class="col-4">
+						<div class="search_box">
+							<form class="search" search-setting="true">
+				                <i class="fas fa-search search__helper"></i>
+				                <input type="text" class="search_input" placeholder="Search Setting">
+				            </form>
+						</div>
+					</div>
+
+					<div class="col-3">
+					</div>
+
+					<div class="col-1 profile_img">
+						<div class="profile">
+							<a href="#" class="profile_click" onclick="showHide()"> <img src="{% static 'img/user.png' %}" class="user_img"  /></a>
+						</div>
+							<div id="logout_nav" style="display:none;">
+								<div id="logout_click">
+										<img src="{% static 'img/user.png' %}" class="user_img"  />
+									<div style="margin-top: 16px; margin-left: 138px;"> {% if user.is_authenticated %}
+											<h4> Hello, {{user.first_name}}</h4>
+											{% endif %}
+									</div>
+										<div class="col-12">
+
+											<div class="col-6">
+												<a href="/user" class="update_link"> <button type="button" class="btn button1"><i class="fa fa-wrench "style="font-size:10px"></i>  Update Profile</button> </a>
+											</div>
+
+											<div class="col-6">
+												<a href="/logout/user" class="logout_link"> <button type="button" class="btn button2">Log Out  <i class=" 	fas fa-sign-out-alt"></i></button> </a><br/>
+											</div>
+
+										</div>
+								</div>
+							</div>
+					</div>
+
+				</div>
+			</nav>
+		</header>
+		<div class="main">
+			<div class="col-12">
+				<div class="col-2">
+					<aside class="sidebar navigation">
+						<div class="sidebar">
+		                	<ul class="navigation__menu">
+		                		<h5 class="navigation_topic">Quick</h5>
+		                		<li><a href="/" class="active"><span class="side_icon"><i class="fas fa-tachometer-alt"></i></span> Dashboard</a></li>
+		                		<li class="navigation_sub">
+		                			<a href="/category"><span class="side_icon"><i class="fas fa-coins"></i></span> Category</a>
+		                		</li>
+		                		<li class="navigation_sub">
+		                			<a href="#" class="dropdown-btn"> <span class="side_icon"><i class="fas fa-shopping-basket"></i></span> Product</a>
+		                			<ul class="dropdown_menu_list dropdown-container">
+		                				<li><a href="/product/add"><span class="side_sub_icon"><i class="fas fa-plus"></i></span> Add Product</a></li>
+		                				<li><a href="/manage_product"><span class="side_sub_icon"><i class="fas fa-tasks"></i></span> Manage Product</a></li>
+		                			</ul>
+		                		</li>
+		                		<li class="navigation_sub">
+		                			<a href="#" class="dropdown-btn"><span class="side_icon"><i class="fas fa-hand-holding-usd"></i></span>Transaction</a>
+		                			<ul class="dropdown_menu_list dropdown-container">
+		                				<li><a href="/transaction/create"><span class="side_sub_icon"><i class="fas fa-plus"></i></span> Add Transaction</a></li>
+		                				<li><a href="/manage_transaction"><span class="side_sub_icon"><i class="fas fa-tasks"></i></span> Manage Transac..</a></li>
+		                			</ul>
+		                		</li>
+		                		<li><a href="/user" > <span class="side_icon"><i class="fas fa-user-tie"></i></span>User</a></li>
+		                		<li><a href="/setting"> <span class="side_icon"> <i class="fas fa-cogs"></i></span>Setting</a></li>
+		                	</ul>
+		                </div>
+					</aside>
+				</div>
+				<div class="col-10">
+					{% block body %} {% endblock %}
+								</div>
+			</div>
+		</div>
+	</div>
+
+<script src="{% static 'js/logout.js'%}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/modal.js' %}"></script>
+<script src="{% static 'js/fontawesome/all.js' %}"></script>
+</body>
+</html>

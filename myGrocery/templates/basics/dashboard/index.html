@@ -1,0 +1,109 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     Dashboard
+{% endblock %}
+
+{% block body %}
+	<section class="content">
+	<div class="container">
+		<div class="col-12 title_header">
+			<header class="content__title">
+				<h1>Dashboard</h1>
+			</header>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="col-3 dashboard_card bg-warning">
+			<p class="total-text">100</p>
+			<span class="card_icon"><i class="fas fa-layer-group"></i></span>
+            <p class="card_label"><a href="#">Category</a></p>
+            <p class="abt-area">
+            </p>
+		</div>
+		<div class="col-3 dashboard_card bg-danger">
+			<p class="total-text">500</p>
+			<span class="card_icon"><i class="fas fa-hamburger"></i></span>
+            <p class="card_label"><a href="#">Product</a></p>
+            <p class="abt-area">
+            </p>
+		</div>
+		<div class="col-3 dashboard_card bg-success">
+			<p class="total-text">200</p>
+			<span class="card_icon"><i class="fas fa-dollar-sign"></i></span>
+            <p class="card_label"><a href="#">Transaction</a></p>
+            <p class="abt-area">
+            </p>
+		</div>
+
+		<div class="col-3 dashboard_card bg-orange">
+			<p class="total-text">6520</p>
+			<span class="card_icon"><i class="fas fa-truck"></i></span>
+            <p class="card_label"><a href="#">Sales</a></p>
+            <p class="abt-area">
+            </p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="title_header pdt-5">
+			<header class="content__title section_title">
+				<h3>Today's Transaction</h3>
+			</header>
+		</div>
+		<div class="">
+			<table>
+				<thead>
+					<tr>
+						<th>Customer Name</th>
+						<th>Product Name</th>
+						<th>Quantity</th>
+						<th>Time</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+						<td>Rice</td>
+						<td>3 kg</td>
+						<td>2020-07-04 17:34:31</td>
+						<td class="action"><a href="#" title="View"><span class=""><i class="fas fa-eye"></i></span></a></td>
+					</tr>
+					<tr>
+						<td>Asmit Nepali</td>
+						<td>Biscuits</td>
+						<td>3</td>
+						<td>2020-07-04 17:34:31</td>
+						<td class="action"><a href="#" title="View"><span class=""><i class="fas fa-eye"></i></span></a></td>
+
+					</tr>
+					<tr>
+						<td>Shreejan Pandit</td>
+						<td>Milk</td>
+						<td>2 L</td>
+						<td>2020-07-04 17:34:31</td>
+						<td class="action"><a href="#" title="View"><span class=""><i class="fas fa-eye"></i></span></a></td>
+
+					</tr>
+					<tr>
+						<td>Narayan Acharya</td>
+						<td>Patatos</td>
+						<td>5 kg</td>
+						<td>2020-07-04 17:34:31</td>
+						<td class="action"><a href="#" title="View"><span class=""><i class="fas fa-eye"></i></span></a></td>
+
+					</tr>
+					<tr>
+						<td>Saurab Bikram Sen</td>
+						<td>Rice</td>
+						<td>25 Kg</td>
+						<td>2020-07-04 17:34:31</td>
+						<td class="action"><a href="#" title="View"><span class=""><i class="fas fa-eye"></i></span></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+

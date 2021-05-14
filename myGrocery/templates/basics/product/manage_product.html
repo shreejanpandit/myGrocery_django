@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     Dashboard
+{% endblock %}
+
+{% block body %}
+<section class="content">
+	<header class="content__title section_title">
+		<h3>All Product</h3>
+
+	</header>
+	<div class="card">
+		<div class="border-table">
+			<table>
+				<thead>
+					<tr>
+						<th>Category</th>
+						<th>Name</th>
+						<th title="Total Scale">Ttl.Scale</th>
+						<th title="Unit Price">U.Price</th>
+						<th title="Buying Price">B.Price</th>
+						<th title="Manufacturer's Suggested Retail Price">MSRP</th>
+						<th title="Product Code">Code</th>
+						<th title="Quantity In Scale">Q.In Scale</th>
+						<th title="Quantity IN Stock">Q.In Stock</th>
+						<th title="Total Price">Ttl.Price</th>
+						<th colspan="3">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				{% for prod in product_data %}
+						<tr id="product_tr_{{prod.id}}">
+							<td id="product_category_{{prod.id}}"> {{prod.categoryID}}</td>
+							<td id="product_name_{{prod.id}}"> {{prod.name}}</td>
+							<td id="product_totalScale_{{prod.id}}"> {{prod.totalScale}}</td>
+							<td id="product_unitPrice_{{prod.id}}"> {{prod.unitPrice}}</td>
+							<td id="product_buyPrice_{{prod.id}}"> {{prod.buyPrice}}</td>
+							<td id="product_msrp_{{prod.id}}"> {{prod.msrp}}</td>
+							<td id="product_productCode_{{prod.id}}"> {{prod.productCode}}</td>
+							<td id="product_quantityInScale_{{prod.id}}"> {{prod.quantityInScale}}</td>
+							<td id="product_quantityInStock_{{prod.id}}"> {{prod.quantityInStock}}</td>
+							<td id="product_totalPrice_{{prod.id}}">{{prod.totalPrice}}</td>
+							<td class="action"><a href="{% url 'delete' prod.id %}" title="Delete"><i class="fas fa-trash text-danger"></i></a></td>
+							<td class="action"><a href="{% url 'update' prod.id %}" title="Edit"><i class="fas fa-pencil-alt text-success"></i></a></td>
+							<td class="action"><a href="#" title="View"><i class="fas fa-eye text-info"></i></a></td>
+							</td>
+						</tr>
+						{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+{% endblock %}
+

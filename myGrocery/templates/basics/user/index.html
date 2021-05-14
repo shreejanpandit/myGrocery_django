@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     User
+{% endblock %}
+
+{% block body %}
+<section class="content">
+	<header class="content__title section_title">
+		<h3>Update Your User</h3>
+	</header>
+	<div class="card">
+		<div class="form-main">
+			<form action="" method="post" class="product-form">
+				{% csrf_token %}
+				{{form.as_p}}
+					<div class="col-11">
+						<div class="submit-btn float-right">
+							<button type="submit" class="btn_primary">Update</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
+

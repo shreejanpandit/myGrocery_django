@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     setting
+{% endblock %}
+
+{% block body %}
+
+<section class="content">
+    <header class="content__title section_title">
+        <h3>Configuration</h3>
+        <?php flash('successMsg');?>
+    </header>
+    <div class="form-card">
+        <div class="form-main">
+            <form action="/setting/" method="POST" class="product-form">
+                {% csrf_token %}
+                <div class="col-12">
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Name of Glocery</label>
+                        	<input type="text" name="name" class="form-control" placeholder="Grocery Name" />
+                            <span class="invalid-feedback"><?= !empty($data['name_err'])?$data['name_err']:'' ;?></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Address</label>
+                        	<input type="text" name="address" class="form-control" placeholder="Address of Grocery" />
+                            <span class="invalid-feedback"><?= !empty($data['address_err'])?$data['address_err']:'' ;?></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Email of Grocery</label>
+                        	<input type="email" name="email" class="form-control" placeholder="email" />
+                            <span class="invalid-feedback"><?= !empty($data['email_err'])?$data['email_err']:'' ;?></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Establish date</label> <input type="date" name="est_date" class="form-control" placeholder="Established Date" />
+                            <span class="invalid-feedback"><?= !empty($data['est_date_err'])?$data['est_date_err']:'' ;?></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Websites</label>
+                        	<input type="text" name="website" class="form-control" placeholder="Your Website Link" />
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                        	<label>Facebook link</label>
+                        	<input type="text" name="facebook" class="form-control" placeholder="Your Facebook Link" />
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+					<div class="col-11">
+						<div class="submit-btn float-right">
+							<button type="submit" class="btn_primary">Submit</button>
+						</div>
+					</div>
+                </div>
+        	</form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

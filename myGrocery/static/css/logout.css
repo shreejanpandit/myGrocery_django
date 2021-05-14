@@ -1,0 +1,51 @@
+
+#logout_click {
+  width: 25%;
+  height: 13rem;
+  position: absolute;
+  border: 5rem;
+  border-radius: 0.3rem;
+  border-color: black;
+  right: 0%;
+  z-index: 1;
+  background-color: #e53935;
+}
+
+#logout_click > img.user_img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 5.5rem;
+  max-height: 5.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: right;
+  margin-bottom: 0.1rem;
+  margin-top: 0.4rem;
+}
+
+.form_group.sub_btn {
+  margin-top: 0px;
+}
+button.btn {
+      padding: 3px;
+      width: 100%;
+      background-color: #ff8f00;
+      border: 1px solid #ffff;
+      color: #ffff;
+      font-size: 16px;
+      margin-top: 25px;
+      
+  } 
+
+  button.button1{
+    margin-left: 9px;
+  }
+  button.button2{
+    margin-left: 5px;
+  }
+
+  button.btn:hover {
+    background-color: #070706;
+  }
+

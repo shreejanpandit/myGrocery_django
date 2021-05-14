@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+     Add Transaction
+{% endblock %}
+
+{% block body %}
+<section class="content">
+	<header class="content__title section_title">
+		<h3>Sales</h3>
+	</header>
+	<div class="card">
+		<div class="form-main">
+			<form action="/transaction/create" method="post" class="product-form">
+				{% csrf_token %}
+				<div class="col-12">
+					<div class="col-4">
+						<div class="form-group">
+							<label>Category</label>
+							<select class="form-control select" name="category">
+								{% for cat in category_data %}
+								<option value="{{cat.id}}">{{cat.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Product</label>
+							<select class="form-control select" name="product">
+								{% for prod in product_data %}
+								<option value="{{prod.id}}">{{prod.name}}</option><br/>
+								{% endfor %}
+
+							</select>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Quatity</label>
+							<input type="text" name="quantity" class="form-control" placeholder="Quantity" />
+						</div>
+					</div>
+					<div class="col-11">
+						<div class="submit-btn float-right">
+							<button type="submit" class="btn_primary">ADD</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<header class="content__title section_title">
+		<h3>Your Grocery</h3>
+	</header>
+	<div class="card">
+		<div class="border-table">
+					<table>
+						<thead>
+							<tr>
+								<th>Category</th>
+								<th>Product</th>
+								<th>Quantity</th>
+								<th>Price</th>
+								<th colspan="3">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for trans in transaction_data %}
+						<tr id="transaction_tr_{{trans.id}}">
+							<td id="transaction_category_{{trans.id}}">{{trans.category}}</td>
+							<td id="transaction_product_{{trans.id}}">{{trans.product}}</td>
+							<td id="transaction_quantity_{{trans.id}}">{{trans.quantity}}</td>
+							<td id="transaction_totalPrice_{{trans.id}}">{{trans.totalPrice}}</td>
+							<td class="action"><a href="{% url 'delete' trans.id %}" title="Delete"><img src="{% static 'img/icon/trash.svg' %}" class="icon-img"></a></td>
+							<td class="action"><a href="#" title="Edit"><img src="{% static 'img/icon/pencil.svg'%}" class="icon-img"></a></td>
+							<td class="action"><a href="#" title="View"><img src="{% static 'img/icon/eye.svg'%}" class="icon-img"></a></td>
+						</tr>
+						{% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+	</div>
+</section>
+{% endblock %}
+

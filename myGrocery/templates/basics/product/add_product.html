@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     Dashboard
+{% endblock %}
+
+{% block body %}
+<section class="content">
+	<header class="content__title section_title">
+		<h3>Product</h3>
+		<?php flash('productMsg'); ?>
+	</header>
+
+	<div class="form-card">
+		<div class="form-main">
+			<form action="/product/add/" method="POST" class="product-form">
+				{% csrf_token %}
+				<div class="col-12">
+					<div class="col-4">
+						<div class="form-group">
+							<label>Category</label>
+							<select class="form-control select" name="category">
+								{% for cat in data %}
+								<option value="{{cat.id}}">{{cat.name}}</option>
+								{% endfor %}
+							</select>
+
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Name</label>
+							<input type="text" name="name" class="form-control" placeholder="Product Name" />
+							<span class="invalid-feedback"><?= !empty($data['name_err'])?$data['name_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Total Scale</label>
+							<input type="text" name="total_scale" class="form-control" placeholder="Total Scale" />
+							<span class="invalid-feedback"><?= !empty($data['total_scale_err'])?$data['total_scale_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Unit Price</label>
+							<input type="text" name="unit_price" class="form-control" placeholder="Unit Price" />
+							<span class="invalid-feedback"><?= !empty($data['unit_price_err'])?$data['unit_price_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Buying Price</label>
+							<input type="text" name="buy_price" class="form-control" placeholder="Buying Price" />
+							<span class="invalid-feedback"><?= !empty($data['buy_price_err'])?$data['buy_price_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>MSRP</label>
+							<input type="text" name="msrp" class="form-control" placeholder="MSRP" />
+							<span class="invalid-feedback"><?= !empty($data['msrp_err'])?$data['msrp_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Product Code</label>
+							<input type="text" name="product_code" class="form-control" placeholder="Product Code" />
+							<span class="invalid-feedback"><?= !empty($data['product_code_err'])?$data['product_code_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<label>Quantity In a Sclae</label>
+							<input type="text" name="quantity_in_scale" class="form-control" placeholder="Quantity In Scale" />
+							<span class="invalid-feedback"><?= !empty($data['quantity_in_scale_err'])?$data['quantity_in_scale_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-4"></div>
+					<div class="col-10">
+						<div class="form-group">
+		                    <label>Description</label>
+		                    <textarea name="description" rows="5" class="form-control text-counter"></textarea>
+							<span class="invalid-feedback"><?= !empty($data['description_err'])?$data['description_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-2"></div>
+					<div class="col-11">
+						<div class="submit-btn float-right">
+							<button type="submit" class="btn_primary">Submit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <link rel="stylesheet" href="{% static 'css/grid.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <title>login</title>
+</head>
+<body>
+	<div class="container page_background">
+		<div class="sub_main">
+			<div class="col-12 login_card">
+				<div class="col-6 login_img">
+					<div class="banner_img">
+						<img src="{% static '/img/login_img.png'%}" class="box_img">
+					</div>
+				</div>
+				<div class="col-6 login_form">
+					<div class="login_heading">
+						My Grocery
+					</div>
+					<div class="user_card">
+						<form action="/login/" method="POST">{% csrf_token %}
+							<div class="my_form">
+								<div class="form_group">
+									<input type="text" name="username" class="form_control" placeholder="username" />
+									<span class="invalid-feedback"><?= !empty($data['email_err'])?$data['email_err']:'' ;?></span>
+								</div>
+								<div class="form_group">
+									<input type="password" name="password" class="form_control" placeholder="passowrd" />
+									<span class="invalid-feedback"><?= !empty($data['password_err'])?$data['password_err']:'' ;?></span>
+								</div>
+								<div class="form_group register_lable_parent">
+									<!-- <p class="register_text">Don't have account yet ?.</p> -->
+									<a href="/registration/save" class="register_lable">Create an account.</a>
+								</div>
+								<div class="form_group sub_btn">
+									<button type="" name="" class="btn"> Login </button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

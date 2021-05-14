@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% block title %}
+     Category
+{% endblock %}
+
+{% block body %}
+	<section class="content">
+	<header class="content__title section_title">
+	<h3>Category</h3>
+	</header>
+	<div class="card">
+		<div class="form-main">
+			<form action="/category/" method="POST" class="product-form">
+				{% csrf_token %}
+				<div class="col-12">
+					<div class="col-6">
+						<div class="form-group">
+							<label>Category Name</label>
+							<input type="text" name="name" class="form-control" placeholder="Category Name" value="{{data.name}}" />
+							<span class="invalid-feedback"><?= !empty($data['name_err'])?$data['name_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label>Remarks</label>
+							<input type="text" name="description" class="form-control" placeholder="Remarks" />
+							<span class="invalid-feedback"><?= !empty($data['description_err'])?$data['description_err']:'' ;?></span>
+						</div>
+					</div>
+					<div class="col-11">
+						<div class="submit-btn float-right">
+							<button type="submit" class="btn_primary">Submit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<header class="content__title section_title">
+		<h3>All Category</h3>
+	</header>
+	<div class="card">
+		<div class="border-table">
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Remarks</th>
+								<th colspan="3">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for cat in data %}
+						<tr id="category_tr_{{cat.id}}">
+							<td id="category_name_{{cat.id}}"> {{cat.name}}</td>
+							<td id="cat_remark_{{cat.id}}">{{cat.remarks}}</td>
+							<td class="action"><a href="/see_category/delete/{{cat.id}}" title="Delete"><i class="fas fa-trash text-danger"></i></a></td>
+							<td class="action" id="edit_action_{{cat.id}}"><a href="/see_category/update/{{cat.id }}" title="Edit"><i class="fas fa-pencil-alt text-success"></i></a></td>
+							<td class="action"><a href="javascript:void(0)" title="View"><i class="fas fa-eye text-info"></i></a>
+							</td>
+						</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+	</div>
+</section>
+
+{% endblock %}
+
